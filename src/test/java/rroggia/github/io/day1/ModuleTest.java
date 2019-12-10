@@ -10,6 +10,9 @@ public class ModuleTest {
 	public void determineFuelRequiredToLaunch() {
 		int fuelRequiredToLaunch = new Module(12).determineFuelRequiredToLaunch();
 		assertEquals(2, fuelRequiredToLaunch);
+
+		assertEquals(654, new Module(1969).determineFuelRequiredToLaunch());
+		assertEquals(33583, new Module(100756).determineFuelRequiredToLaunch());
 	}
 
 	@Test
