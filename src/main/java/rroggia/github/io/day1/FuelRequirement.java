@@ -3,14 +3,14 @@ package rroggia.github.io.day1;
 import java.util.Arrays;
 import java.util.List;
 
-public class FuelRequirementCalculator {
+public class FuelRequirement {
 	private List<Module> modules;
 
-	public FuelRequirementCalculator(Module... module) {
+	public FuelRequirement(Module... module) {
 		modules = Arrays.asList(module);
 	}
 
-	public int calculateFuelRequirements() {
+	public int calculateFuelRequirement() {
 		int fuelRequirement = 0;
 		for (var module : modules) {
 			fuelRequirement += module.determineFuelRequiredToLaunch();
