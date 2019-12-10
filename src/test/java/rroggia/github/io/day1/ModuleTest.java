@@ -7,9 +7,10 @@ import org.junit.jupiter.api.Test;
 public class ModuleTest {
 
 	@Test
-	public void determineModuleMass() {
-		int mass = new Module(12).determineMass();
-		assertEquals(2, mass);
+	public void determineFuelRequiredToLaunch() {
+		int fuelRequiredToLaunch = new Module(12).determineFuelRequiredToLaunch();
+		assertEquals(2, fuelRequiredToLaunch);
 	}
+
 
 }
