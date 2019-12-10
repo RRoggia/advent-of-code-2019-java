@@ -12,4 +12,12 @@ public class FuelRequirementCalculatorTest {
 		assertEquals(2, calculator.calculateFuelRequirements());
 	}
 
+	@Test
+	public void calculateFuelForMoreThanOneModule() {
+		var calculator = new FuelRequirementCalculator(new Module(12), new Module(14), new Module(1969),
+				new Module(100756));
+
+		assertEquals(34241, calculator.calculateFuelRequirements());
+	}
+
 }
