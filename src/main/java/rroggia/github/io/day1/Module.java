@@ -9,7 +9,8 @@ public class Module {
 	}
 
 	public int determineFuelRequiredToLaunch() {
-		return 2;
+		int divison = Math.floorDiv(mass, 3);
+		return divison - 2;
 	}
 
 }

@@ -12,6 +12,7 @@ public class ModuleTest {
 		assertEquals(2, fuelRequiredToLaunch);
 	}
 
+	@Test
 	public void roundingDown() {
 		int fuelRequiredToLaunch = new Module(14).determineFuelRequiredToLaunch();
 		assertEquals(2, fuelRequiredToLaunch);
