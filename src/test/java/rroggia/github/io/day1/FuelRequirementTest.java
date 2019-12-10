@@ -17,7 +17,7 @@ public class FuelRequirementTest {
 		var calculator = new FuelRequirement(new Module(12), new Module(14), new Module(1969),
 				new Module(100756));
 
-		assertEquals(34241, calculator.calculateFuelRequirement());
+		assertEquals(51316, calculator.calculateFuelRequirement());
 	}
 
 }
