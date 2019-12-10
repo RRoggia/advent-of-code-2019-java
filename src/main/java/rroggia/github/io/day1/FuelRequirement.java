@@ -1,13 +1,16 @@
 package rroggia.github.io.day1;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class FuelRequirement {
-	private List<Module> modules;
+	private Iterable<Module> modules;
 
 	public FuelRequirement(Module... module) {
 		modules = Arrays.asList(module);
+	}
+
+	public FuelRequirement(Iterable<Module> modules) {
+		this.modules = modules;
 	}
 
 	public int calculateFuelRequirement() {
