@@ -21,9 +21,12 @@ public class OpcodeReader {
 
 			return new AddOpcode(firstIndexPosition, secondIndexPosition, storeIndexPosition);
 		} else if (OperationCode.MULTIPLIER.getCode().equals(operation)) {
-			nextOpcode = opcodes[lastOpcodeIndex] + "," + opcodes[lastOpcodeIndex + 1] + ","
-					+ opcodes[lastOpcodeIndex + 2] + "," + opcodes[lastOpcodeIndex + 3];
+			var firstIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 1]);
+			var secondIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 2]);
+			var storeIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 3]);
 			lastOpcodeIndex += 4;
+
+			return new MultiplierOpcode(firstIndexPosition, secondIndexPosition, storeIndexPosition);
 		} else if (OperationCode.HALT.getCode().equals(operation)) {
 			nextOpcode = opcodes[lastOpcodeIndex];
 			lastOpcodeIndex += 1;
