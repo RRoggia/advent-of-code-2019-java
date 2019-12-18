@@ -39,4 +39,25 @@ public class OpcodeReader {
 		}
 	}
 
+	public void resolveNextOpcode() {
+		Opcode nextOpcode = this.getNextOpcode();
+		var opcodes = nextOpcode.toString().split(",");
+
+		String operation = opcodes[0];
+		if (OperationCode.ADD.getCode().equals(operation)) {
+			this.opcodes[Integer.parseInt(opcodes[3])] = String
+					.valueOf(Integer.parseInt(this.opcodes[Integer.parseInt(opcodes[1])])
+							+ Integer.parseInt(this.opcodes[Integer.parseInt(opcodes[2])]));
+		}
+
+	}
+
+	public String getOpcodeCurrentState() {
+		String opcodeCurrentState = "";
+		for (var opcode : opcodes) {
+			opcodeCurrentState += opcode + ",";
+		}
+		return opcodeCurrentState.substring(0, opcodeCurrentState.length() - 1);
+	}
+
 }

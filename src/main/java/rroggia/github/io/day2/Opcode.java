@@ -12,4 +12,8 @@ public class Opcode {
 		return this.opcode;
 	}
 
+	public void resolveAddOpcode(String[] opcodes) {
+		
+	}
+
 }
