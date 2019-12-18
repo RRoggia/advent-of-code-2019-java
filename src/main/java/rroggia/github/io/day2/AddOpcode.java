@@ -21,9 +21,4 @@ public class AddOpcode extends Opcode {
 		return opcodes;
 	}
 
-	@Override
-	public String toString() {
-		return "1," + firstIndexPosition + "," + secondIndexPosition + "," + storeIndexPosition;
-	}
-
 }
