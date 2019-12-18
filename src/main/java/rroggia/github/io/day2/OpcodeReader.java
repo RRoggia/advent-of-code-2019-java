@@ -10,7 +10,6 @@ public class OpcodeReader {
 	}
 
 	public Opcode getNextOpcode() {
-		String nextOpcode = "";
 
 		String operation = opcodes[lastOpcodeIndex];
 		if (OperationCode.ADD.getCode().equals(operation)) {
@@ -28,11 +27,11 @@ public class OpcodeReader {
 
 			return new MultiplierOpcode(firstIndexPosition, secondIndexPosition, storeIndexPosition);
 		} else if (OperationCode.HALT.getCode().equals(operation)) {
-			nextOpcode = opcodes[lastOpcodeIndex];
 			lastOpcodeIndex += 1;
+			return new HaltOpcode();
 		}
 
-		return new Opcode(nextOpcode);
+		throw new RuntimeException("Could not identify operation.");
 	}
 
 	private enum OperationCode {
