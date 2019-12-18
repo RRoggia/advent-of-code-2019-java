@@ -12,7 +12,7 @@ public class MultiplierOpcode extends ChangeMemoryBasedOnTwoInputsOpcode {
 	}
 
 	@Override
-	String getOperation() {
+	protected String getOperation() {
 		return "99";
 	}
 

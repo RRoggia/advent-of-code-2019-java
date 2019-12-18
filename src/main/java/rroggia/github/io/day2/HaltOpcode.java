@@ -12,7 +12,7 @@ public class HaltOpcode extends Opcode {
 	}
 
 	@Override
-	String getOperation() {
+	protected String getOperation() {
 		return "99";
 	}
 

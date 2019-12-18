@@ -12,7 +12,7 @@ public class AddOpcode extends ChangeMemoryBasedOnTwoInputsOpcode {
 	}
 
 	@Override
-	String getOperation() {
+	protected String getOperation() {
 		return "1";
 	}
 
