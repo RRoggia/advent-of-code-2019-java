@@ -16,18 +16,15 @@ public class OpcodeReader {
 			var firstIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 1]);
 			var secondIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 2]);
 			var storeIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 3]);
-			lastOpcodeIndex += 4;
 
 			return new AddOpcode(firstIndexPosition, secondIndexPosition, storeIndexPosition);
 		} else if (OperationCode.MULTIPLIER.getCode().equals(operation)) {
 			var firstIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 1]);
 			var secondIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 2]);
 			var storeIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 3]);
-			lastOpcodeIndex += 4;
 
 			return new MultiplierOpcode(firstIndexPosition, secondIndexPosition, storeIndexPosition);
 		} else if (OperationCode.HALT.getCode().equals(operation)) {
-			lastOpcodeIndex += 1;
 			return new HaltOpcode();
 		}
 
@@ -49,7 +46,13 @@ public class OpcodeReader {
 	}
 
 	public void resolveNextOpcode() {
-		this.getNextOpcode().resolveOpcode(opcodes);
+		var nextOpcode = this.getNextOpcode();
+
+		if (!OperationCode.HALT.getCode().equals(nextOpcode.getOperation())) {
+			lastOpcodeIndex += 4;
+		}
+
+		nextOpcode.resolveOpcode(opcodes);
 	}
 
 	public String getOpcodeCurrentState() {

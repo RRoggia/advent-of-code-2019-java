@@ -16,7 +16,7 @@ public class OpcodeReaderTest {
 	@Test
 	public void readFollowingOpcode() {
 		var opcodeReader = new OpcodeReader("1,9,10,3,2,3,11,0,99,30,40,50");
-		opcodeReader.getNextOpcode();
+		opcodeReader.resolveNextOpcode();
 		Opcode opcode = opcodeReader.getNextOpcode();
 		assertEquals("2,3,11,0", opcode.toString());
 	}
@@ -24,8 +24,8 @@ public class OpcodeReaderTest {
 	@Test
 	public void readUntilHalt() {
 		var opcodeReader = new OpcodeReader("1,9,10,3,2,3,11,0,99,30,40,50");
-		opcodeReader.getNextOpcode();
-		opcodeReader.getNextOpcode();
+		opcodeReader.resolveNextOpcode();
+		opcodeReader.resolveNextOpcode();
 		var opcode = opcodeReader.getNextOpcode();
 		assertEquals("99", opcode.toString());
 	}
