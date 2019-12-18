@@ -12,5 +12,5 @@ public abstract class Opcode {
 		return this.opcode;
 	}
 
-	protected abstract String[] resolveOpcode(String[] opcodes);
+	abstract String[] resolveOpcode(String[] opcodes);
 }
