@@ -30,4 +30,15 @@ public class OpcodeReaderTest {
 		assertEquals("99", opcode.toString());
 	}
 
+	@Test
+	public void resolveAddOpcode() {
+		var opcodeReader = new OpcodeReader("1,9,10,3,2,3,11,0,99,30,40,50");
+		opcodeReader.resolveNextOpcode();
+
+		assertEquals("1,9,10,70,2,3,11,0,99,30,40,50", opcodeReader.getOpcodeCurrentState());
+
+		assertEquals("99", opcode.toString());
+
+	}
+
 }
