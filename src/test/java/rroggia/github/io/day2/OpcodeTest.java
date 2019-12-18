@@ -20,5 +20,6 @@ public class OpcodeTest {
 		Opcode opcode = opcodeReader.getNextOpcode();
 		assertEquals("2,3,11,0", opcode.toString());
 	}
+	
 
 }
