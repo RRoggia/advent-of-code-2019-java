@@ -2,28 +2,27 @@ package rroggia.github.io.day2;
 
 public class OpcodeReader {
 
-	private String opcodes;
 	private int lastOpcodeIndex = 0;
+	private String[] opcodes;
 
 	public OpcodeReader(String opcodes) {
-		this.opcodes = opcodes;
+		this.opcodes = opcodes.split(",");
 	}
 
 	public Opcode getNextOpcode() {
-		String[] splitedOpcodes = opcodes.split(",");
-		String opcode = "";
+		String nextOpcode = "";
 
-		String operation = splitedOpcodes[lastOpcodeIndex];
+		String operation = opcodes[lastOpcodeIndex];
 		if (OperationCode.ADD.getCode().equals(operation) || OperationCode.MULTIPLIER.getCode().equals(operation)) {
-			opcode = splitedOpcodes[lastOpcodeIndex] + "," + splitedOpcodes[lastOpcodeIndex + 1] + ","
-					+ splitedOpcodes[lastOpcodeIndex + 2] + "," + splitedOpcodes[lastOpcodeIndex + 3];
+			nextOpcode = opcodes[lastOpcodeIndex] + "," + opcodes[lastOpcodeIndex + 1] + ","
+					+ opcodes[lastOpcodeIndex + 2] + "," + opcodes[lastOpcodeIndex + 3];
 			lastOpcodeIndex += 4;
 		} else if (OperationCode.HALT.getCode().equals(operation)) {
-			opcode = splitedOpcodes[lastOpcodeIndex];
+			nextOpcode = opcodes[lastOpcodeIndex];
 			lastOpcodeIndex += 1;
 		}
 
-		return new Opcode(opcode);
+		return new Opcode(nextOpcode);
 	}
 
 	private enum OperationCode {
