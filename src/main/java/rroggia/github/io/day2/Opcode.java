@@ -12,8 +12,8 @@ public class Opcode {
 		return this.opcode;
 	}
 
-	public void resolveAddOpcode(String[] opcodes) {
-		
+	protected String[] resolveOpcode(String[] opcodes) {
+		return null;
 	}
 
 }

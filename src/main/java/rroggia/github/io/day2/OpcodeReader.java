@@ -13,7 +13,14 @@ public class OpcodeReader {
 		String nextOpcode = "";
 
 		String operation = opcodes[lastOpcodeIndex];
-		if (OperationCode.ADD.getCode().equals(operation) || OperationCode.MULTIPLIER.getCode().equals(operation)) {
+		if (OperationCode.ADD.getCode().equals(operation)) {
+			var firstIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 1]);
+			var secondIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 2]);
+			var storeIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 3]);
+			lastOpcodeIndex += 4;
+
+			return new AddOpcode(firstIndexPosition, secondIndexPosition, storeIndexPosition);
+		} else if (OperationCode.MULTIPLIER.getCode().equals(operation)) {
 			nextOpcode = opcodes[lastOpcodeIndex] + "," + opcodes[lastOpcodeIndex + 1] + ","
 					+ opcodes[lastOpcodeIndex + 2] + "," + opcodes[lastOpcodeIndex + 3];
 			lastOpcodeIndex += 4;
@@ -40,16 +47,7 @@ public class OpcodeReader {
 	}
 
 	public void resolveNextOpcode() {
-		Opcode nextOpcode = this.getNextOpcode();
-		var opcodes = nextOpcode.toString().split(",");
-
-		String operation = opcodes[0];
-		if (OperationCode.ADD.getCode().equals(operation)) {
-			this.opcodes[Integer.parseInt(opcodes[3])] = String
-					.valueOf(Integer.parseInt(this.opcodes[Integer.parseInt(opcodes[1])])
-							+ Integer.parseInt(this.opcodes[Integer.parseInt(opcodes[2])]));
-		}
-
+		this.getNextOpcode().resolveOpcode(opcodes);
 	}
 
 	public String getOpcodeCurrentState() {
