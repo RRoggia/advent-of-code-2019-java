@@ -19,7 +19,7 @@ public class OpcodeReader {
 					+ splitedOpcodes[lastOpcodeIndex + 2] + "," + splitedOpcodes[lastOpcodeIndex + 3];
 			lastOpcodeIndex += 4;
 		} else if (OperationCode.HALT.getCode().equals(operation)) {
-			opcode = splitedOpcodes[0];
+			opcode = splitedOpcodes[lastOpcodeIndex];
 			lastOpcodeIndex += 1;
 		}
 
