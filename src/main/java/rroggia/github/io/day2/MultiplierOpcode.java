@@ -11,4 +11,9 @@ public class MultiplierOpcode extends ChangeMemoryBasedOnTwoInputsOpcode {
 		return Integer.parseInt(opcodes[firstIndexPosition]) * Integer.parseInt(opcodes[secondIndexPosition]);
 	}
 
+	@Override
+	String getOperation() {
+		return "99";
+	}
+
 }

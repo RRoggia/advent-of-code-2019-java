@@ -13,4 +13,6 @@ public abstract class Opcode {
 	}
 
 	abstract String[] resolveOpcode(String[] opcodes);
+
+	abstract String getOperation();
 }

@@ -11,4 +11,9 @@ public class HaltOpcode extends Opcode {
 		return opcodes;
 	}
 
+	@Override
+	String getOperation() {
+		return "99";
+	}
+
 }
