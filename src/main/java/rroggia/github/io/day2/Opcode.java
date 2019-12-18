@@ -1,6 +1,6 @@
 package rroggia.github.io.day2;
 
-public class Opcode {
+public abstract class Opcode {
 	private String opcode;
 
 	public Opcode(String opcode) {
@@ -12,8 +12,5 @@ public class Opcode {
 		return this.opcode;
 	}
 
-	protected String[] resolveOpcode(String[] opcodes) {
-		return null;
-	}
-
+	protected abstract String[] resolveOpcode(String[] opcodes);
 }
