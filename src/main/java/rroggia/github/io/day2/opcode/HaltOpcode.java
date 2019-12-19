@@ -2,7 +2,7 @@ package rroggia.github.io.day2.opcode;
 
 import rroggia.github.io.day2.Operation;
 
-public class HaltOpcode extends Opcode implements Opcode1 {
+public class HaltOpcode implements Opcode1 {
 
 	@Override
 	public String[] resolve(String[] opcodes) {
