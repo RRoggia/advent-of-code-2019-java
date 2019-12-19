@@ -1,6 +1,6 @@
 package rroggia.github.io.day2.opcode;
 
-public abstract class ChangeMemoryBasedOnTwoInputsOpcode implements Opcode1 {
+public abstract class ChangeMemoryBasedOnTwoInputsOpcode implements Opcode {
 
 	protected int operation;
 	protected int firstIndexPosition;

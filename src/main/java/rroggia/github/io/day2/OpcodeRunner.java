@@ -7,7 +7,7 @@ import static rroggia.github.io.day2.Operation.MULTIPLIER;
 import rroggia.github.io.day2.opcode.AddOpcode;
 import rroggia.github.io.day2.opcode.HaltOpcode;
 import rroggia.github.io.day2.opcode.MultiplierOpcode;
-import rroggia.github.io.day2.opcode.Opcode1;
+import rroggia.github.io.day2.opcode.Opcode;
 
 public class OpcodeRunner {
 
@@ -18,7 +18,7 @@ public class OpcodeRunner {
 		this.opcodes = opcodes.split(",");
 	}
 
-	public Opcode1 getNextOpcode() {
+	public Opcode getNextOpcode() {
 
 		String operation = opcodes[instructionPointer];
 
@@ -41,7 +41,7 @@ public class OpcodeRunner {
 	}
 
 	public void resolveNextOpcode() {
-		Opcode1 nextOpcode = this.getNextOpcode();
+		Opcode nextOpcode = this.getNextOpcode();
 
 		if (!isHaltOpcode(nextOpcode)) {
 			instructionPointer += 4;
@@ -54,7 +54,7 @@ public class OpcodeRunner {
 		return isHaltOpcode(this.getNextOpcode());
 	}
 
-	public boolean isHaltOpcode(Opcode1 opcode) {
+	public boolean isHaltOpcode(Opcode opcode) {
 		return HALT == opcode.getOperation();
 	}
 
