@@ -4,6 +4,11 @@ import static rroggia.github.io.day2.Operation.ADD;
 import static rroggia.github.io.day2.Operation.HALT;
 import static rroggia.github.io.day2.Operation.MULTIPLIER;
 
+import rroggia.github.io.day2.opcode.AddOpcode;
+import rroggia.github.io.day2.opcode.HaltOpcode;
+import rroggia.github.io.day2.opcode.MultiplierOpcode;
+import rroggia.github.io.day2.opcode.Opcode;
+
 public class OpcodeReader {
 
 	private int instructionPointer = 0;

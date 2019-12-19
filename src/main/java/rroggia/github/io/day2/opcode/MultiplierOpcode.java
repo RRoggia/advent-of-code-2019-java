@@ -1,4 +1,6 @@
-package rroggia.github.io.day2;
+package rroggia.github.io.day2.opcode;
+
+import rroggia.github.io.day2.Operation;
 
 public class MultiplierOpcode extends ChangeMemoryBasedOnTwoInputsOpcode {
 
@@ -7,12 +9,12 @@ public class MultiplierOpcode extends ChangeMemoryBasedOnTwoInputsOpcode {
 	}
 
 	@Override
-	protected int applyConcreteOperation(String[] opcodes) {
+	public int applyConcreteOperation(String[] opcodes) {
 		return Integer.parseInt(opcodes[firstIndexPosition]) * Integer.parseInt(opcodes[secondIndexPosition]);
 	}
 
 	@Override
-	protected Operation getOperation() {
+	public Operation getOperation() {
 		return Operation.MULTIPLIER;
 	}
 

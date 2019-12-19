@@ -1,8 +1,10 @@
-package rroggia.github.io.day2;
+package rroggia.github.io.day2.opcode;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
 import org.junit.jupiter.api.Test;
+
+import rroggia.github.io.day2.opcode.MultiplierOpcode;
 
 public class MultiplierOpcodeTest {
 

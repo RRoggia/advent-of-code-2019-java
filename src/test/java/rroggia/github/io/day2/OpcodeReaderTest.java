@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
+import rroggia.github.io.day2.opcode.Opcode;
+
 public class OpcodeReaderTest {
 
 	private static final String ORIGINAL_OPCODE = "1,9,10,3,2,3,11,0,99,30,40,50";

@@ -14,17 +14,30 @@ public class Day2 {
 			var path = FileSystems.getDefault().getPath(RESOURCES_FOLDER, "day2.txt");
 			var opcodes = Files.readString(path);
 
-			String[] split = opcodes.split(",");
-			String noun = "12";
-			String verb = "2";
+			String result = null;
+			for (int noun = 0; noun <= 99; noun++) {
+				for (int verb = 0; verb <= 99; verb++) {
+					String[] split = opcodes.split(",");
 
-			split[1] = noun;
-			split[2] = verb;
-			var changedOpcodes = String.join(",", Arrays.asList(split));
+					split[1] = String.valueOf(noun);
+					split[2] = String.valueOf(verb);
+					var changedOpcodes = String.join(",", Arrays.asList(split));
 
-			var opcodeReader = new OpcodeReader(changedOpcodes);
-			opcodeReader.resolveAllOpcodes();
-			System.out.println(opcodeReader.getOpcodeCurrentState());
+					var opcodeReader = new OpcodeReader(changedOpcodes);
+					opcodeReader.resolveAllOpcodes();
+
+					String opcodeCurrentState = opcodeReader.getOpcodeCurrentState();
+					String[] results = opcodeCurrentState.split(",");
+					result = results[0];
+
+					if ("19690720".equals(result)) {
+						System.out.println(100 * noun + verb);
+						noun = 100;
+						break;
+					}
+				}
+			}
+
 		} catch (IOException e) {
 			System.out.println("Error reading the day2.txt file.");
 		}

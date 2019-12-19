@@ -1,4 +1,4 @@
-package rroggia.github.io.day2;
+package rroggia.github.io.day2.opcode;
 
 public abstract class ChangeMemoryBasedOnTwoInputsOpcode extends Opcode {
 
@@ -18,10 +18,10 @@ public abstract class ChangeMemoryBasedOnTwoInputsOpcode extends Opcode {
 	}
 
 	@Override
-	protected String[] resolve(String[] opcodes) {
+	public String[] resolve(String[] opcodes) {
 		opcodes[storeIndexPosition] = String.valueOf(applyConcreteOperation(opcodes));
 		return opcodes;
 	}
 
-	protected abstract int applyConcreteOperation(String[] opcodes);
+	public abstract int applyConcreteOperation(String[] opcodes);
 }
