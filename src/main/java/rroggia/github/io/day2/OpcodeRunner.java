@@ -43,15 +43,23 @@ public class OpcodeRunner {
 	public void resolveNextOpcode() {
 		var nextOpcode = this.getNextOpcode();
 
-		if (HALT != nextOpcode.getOperation()) {
+		if (!isHaltOpcode(nextOpcode)) {
 			instructionPointer += 4;
 		}
 
 		nextOpcode.resolve(opcodes);
 	}
 
+	public boolean nextIsHaltOpcode() {
+		return isHaltOpcode(this.getNextOpcode());
+	}
+
+	public boolean isHaltOpcode(Opcode opcode) {
+		return HALT == opcode.getOperation();
+	}
+
 	public void resolveAllOpcodes() {
-		while (Operation.HALT != this.getNextOpcode().getOperation()) {
+		while (!nextIsHaltOpcode()) {
 			resolveNextOpcode();
 		}
 	}
