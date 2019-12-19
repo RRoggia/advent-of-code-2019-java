@@ -17,4 +17,5 @@ public abstract class Opcode {
 	public abstract String[] resolve(String[] opcodes);
 
 	public abstract Operation getOperation();
+
 }

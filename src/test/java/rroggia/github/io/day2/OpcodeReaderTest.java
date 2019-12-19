@@ -5,12 +5,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
 import rroggia.github.io.day2.opcode.AddOpcode;
+import rroggia.github.io.day2.opcode.HaltOpcode;
+import rroggia.github.io.day2.opcode.MultiplierOpcode;
 import rroggia.github.io.day2.opcode.Opcode;
 
 public class OpcodeReaderTest {
 
 	private static final String ORIGINAL_OPCODE = "1,9,10,3,2,3,11,0,99,30,40,50";
 	private static final String ADD_OPCODE = "1,9,10,3";
+	private static final String HALT_OPCODE = "99";
+	private static final String MULTIPLIER_OPCODE = "2,3,11,0";
 	private static final String FIRST_OPCODE_RESOLVED = "1,9,10,70,2,3,11,0,99,30,40,50";
 	private static final String ALL_OPCODES_RESOLVED = "3500,9,10,70,2,3,11,0,99,30,40,50";
 
@@ -20,6 +24,22 @@ public class OpcodeReaderTest {
 		Opcode nextOpcode = opcodeReader.getNextOpcode();
 		var expectedAddOpcode = new AddOpcode(9, 10, 3);
 		assertEquals(expectedAddOpcode, nextOpcode);
+	}
+
+	@Test
+	public void getNextMultiplierOpcode() {
+		var opcodeReader = new OpcodeRunner(MULTIPLIER_OPCODE);
+		Opcode nextOpcode = opcodeReader.getNextOpcode();
+		var expectedMultiplierOpcode = new MultiplierOpcode(3, 11, 0);
+		assertEquals(expectedMultiplierOpcode, nextOpcode);
+	}
+
+	@Test
+	public void getNextHaltOpcode() {
+		var opcodeReader = new OpcodeRunner(HALT_OPCODE);
+		Opcode nextOpcode = opcodeReader.getNextOpcode();
+		var expectedHaltOpcode = new HaltOpcode();
+		assertEquals(expectedHaltOpcode, nextOpcode);
 	}
 
 	@Test

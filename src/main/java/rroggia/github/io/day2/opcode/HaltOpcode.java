@@ -18,4 +18,16 @@ public class HaltOpcode extends Opcode {
 		return Operation.HALT;
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+
+		return Operation.HALT == ((HaltOpcode) obj).getOperation();
+	}
+
 }
