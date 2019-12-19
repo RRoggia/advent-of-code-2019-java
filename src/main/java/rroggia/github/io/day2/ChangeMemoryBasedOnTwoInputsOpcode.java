@@ -18,7 +18,7 @@ public abstract class ChangeMemoryBasedOnTwoInputsOpcode extends Opcode {
 	}
 
 	@Override
-	protected String[] resolveOpcode(String[] opcodes) {
+	protected String[] resolve(String[] opcodes) {
 		opcodes[storeIndexPosition] = String.valueOf(applyConcreteOperation(opcodes));
 		return opcodes;
 	}

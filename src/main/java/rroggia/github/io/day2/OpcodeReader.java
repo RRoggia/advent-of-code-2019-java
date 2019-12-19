@@ -41,7 +41,7 @@ public class OpcodeReader {
 			lastOpcodeIndex += 4;
 		}
 
-		nextOpcode.resolveOpcode(opcodes);
+		nextOpcode.resolve(opcodes);
 	}
 
 	public void resolveAllOpcodes() {

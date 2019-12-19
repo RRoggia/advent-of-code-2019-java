@@ -12,7 +12,7 @@ public abstract class Opcode {
 		return this.opcode;
 	}
 
-	protected abstract String[] resolveOpcode(String[] opcodes);
+	protected abstract String[] resolve(String[] opcodes);
 
 	protected abstract Operation getOperation();
 }

@@ -7,7 +7,7 @@ public class HaltOpcode extends Opcode {
 	}
 
 	@Override
-	protected String[] resolveOpcode(String[] opcodes) {
+	protected String[] resolve(String[] opcodes) {
 		return opcodes;
 	}
 
