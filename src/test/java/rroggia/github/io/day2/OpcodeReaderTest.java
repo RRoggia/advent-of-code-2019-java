@@ -43,20 +43,26 @@ public class OpcodeReaderTest {
 	}
 
 	@Test
-	public void readFollowingOpcode() {
+	public void getNextAfterResolvingOpcode() {
 		var opcodeReader = new OpcodeRunner(ORIGINAL_OPCODE);
 		opcodeReader.resolveNextOpcode();
 		Opcode opcode = opcodeReader.getNextOpcode();
-		assertEquals("2,3,11,0", opcode.toString());
+		var expectedOpcode = new MultiplierOpcode(3, 11, 0);
+		assertEquals(expectedOpcode, opcode);
 	}
 
 	@Test
 	public void readUntilHalt() {
 		var opcodeReader = new OpcodeRunner(ORIGINAL_OPCODE);
+		// read several times to ensure the index is not passing the halt opcode. 
+		opcodeReader.resolveNextOpcode();
+		opcodeReader.resolveNextOpcode();
+		opcodeReader.resolveNextOpcode();
 		opcodeReader.resolveNextOpcode();
 		opcodeReader.resolveNextOpcode();
 		var opcode = opcodeReader.getNextOpcode();
-		assertEquals("99", opcode.toString());
+		var haltOpcode = new HaltOpcode();
+		assertEquals(haltOpcode, opcode);
 	}
 
 	@Test

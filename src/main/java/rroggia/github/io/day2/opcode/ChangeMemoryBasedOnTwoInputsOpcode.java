@@ -9,7 +9,6 @@ public abstract class ChangeMemoryBasedOnTwoInputsOpcode extends Opcode {
 
 	public ChangeMemoryBasedOnTwoInputsOpcode(int operation, int firstIndexPosition, int secondIndexPosition,
 			int storeIndexPosition) {
-		super(operation + "," + firstIndexPosition + "," + secondIndexPosition + "," + storeIndexPosition);
 
 		this.operation = operation;
 		this.firstIndexPosition = firstIndexPosition;
