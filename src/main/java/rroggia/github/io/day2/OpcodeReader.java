@@ -16,20 +16,19 @@ public class OpcodeReader {
 	public Opcode getNextOpcode() {
 
 		String operation = opcodes[lastOpcodeIndex];
-		if (ADD.getCode().equals(operation)) {
-			var firstIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 1]);
-			var secondIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 2]);
-			var storeIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 3]);
 
+		if (HALT.getCode().equals(operation)) {
+			return new HaltOpcode();
+		}
+
+		var firstIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 1]);
+		var secondIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 2]);
+		var storeIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 3]);
+
+		if (ADD.getCode().equals(operation)) {
 			return new AddOpcode(firstIndexPosition, secondIndexPosition, storeIndexPosition);
 		} else if (MULTIPLIER.getCode().equals(operation)) {
-			var firstIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 1]);
-			var secondIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 2]);
-			var storeIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 3]);
-
 			return new MultiplierOpcode(firstIndexPosition, secondIndexPosition, storeIndexPosition);
-		} else if (HALT.getCode().equals(operation)) {
-			return new HaltOpcode();
 		}
 
 		throw new RuntimeException("Could not identify operation.");
