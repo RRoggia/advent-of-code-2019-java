@@ -63,4 +63,11 @@ public class OpcodeReader {
 		return opcodeCurrentState.substring(0, opcodeCurrentState.length() - 1);
 	}
 
+	public void resolveAllOpcodes() {
+		while (!this.getNextOpcode().getOperation().equals(OperationCode.HALT.getCode())) {
+			resolveNextOpcode();
+		}
+
+	}
+
 }
