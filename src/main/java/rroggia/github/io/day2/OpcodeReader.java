@@ -6,7 +6,7 @@ import static rroggia.github.io.day2.Operation.MULTIPLIER;
 
 public class OpcodeReader {
 
-	private int lastOpcodeIndex = 0;
+	private int instructionPointer = 0;
 	private String[] opcodes;
 
 	public OpcodeReader(String opcodes) {
@@ -15,20 +15,21 @@ public class OpcodeReader {
 
 	public Opcode getNextOpcode() {
 
-		String operation = opcodes[lastOpcodeIndex];
+		String operation = opcodes[instructionPointer];
 
 		if (HALT.getCode().equals(operation)) {
 			return new HaltOpcode();
 		}
 
-		var firstIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 1]);
-		var secondIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 2]);
-		var storeIndexPosition = Integer.parseInt(opcodes[lastOpcodeIndex + 3]);
+		var firstInstructionParameter = Integer.parseInt(opcodes[instructionPointer + 1]);
+		var secondInstructionParameter = Integer.parseInt(opcodes[instructionPointer + 2]);
+		var storeInstructionParameter = Integer.parseInt(opcodes[instructionPointer + 3]);
 
 		if (ADD.getCode().equals(operation)) {
-			return new AddOpcode(firstIndexPosition, secondIndexPosition, storeIndexPosition);
+			return new AddOpcode(firstInstructionParameter, secondInstructionParameter, storeInstructionParameter);
 		} else if (MULTIPLIER.getCode().equals(operation)) {
-			return new MultiplierOpcode(firstIndexPosition, secondIndexPosition, storeIndexPosition);
+			return new MultiplierOpcode(firstInstructionParameter, secondInstructionParameter,
+					storeInstructionParameter);
 		}
 
 		throw new RuntimeException("Could not identify operation.");
@@ -38,7 +39,7 @@ public class OpcodeReader {
 		var nextOpcode = this.getNextOpcode();
 
 		if (HALT != nextOpcode.getOperation()) {
-			lastOpcodeIndex += 4;
+			instructionPointer += 4;
 		}
 
 		nextOpcode.resolve(opcodes);
