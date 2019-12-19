@@ -44,19 +44,18 @@ public class OpcodeReader {
 		nextOpcode.resolveOpcode(opcodes);
 	}
 
+	public void resolveAllOpcodes() {
+		while (Operation.HALT != this.getNextOpcode().getOperation()) {
+			resolveNextOpcode();
+		}
+	}
+
 	public String getOpcodeCurrentState() {
 		String opcodeCurrentState = "";
 		for (var opcode : opcodes) {
 			opcodeCurrentState += opcode + ",";
 		}
 		return opcodeCurrentState.substring(0, opcodeCurrentState.length() - 1);
-	}
-
-	public void resolveAllOpcodes() {
-		while (Operation.HALT != this.getNextOpcode().getOperation()) {
-			resolveNextOpcode();
-		}
-
 	}
 
 }
