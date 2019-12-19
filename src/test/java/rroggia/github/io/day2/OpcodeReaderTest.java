@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import rroggia.github.io.day2.opcode.AddOpcode;
 import rroggia.github.io.day2.opcode.HaltOpcode;
 import rroggia.github.io.day2.opcode.MultiplierOpcode;
-import rroggia.github.io.day2.opcode.Opcode;
+import rroggia.github.io.day2.opcode.Opcode1;
 
 public class OpcodeReaderTest {
 
@@ -21,7 +21,7 @@ public class OpcodeReaderTest {
 	@Test
 	public void getNextAddOpcode() {
 		var opcodeReader = new OpcodeRunner(ADD_OPCODE);
-		Opcode nextOpcode = opcodeReader.getNextOpcode();
+		Opcode1 nextOpcode = opcodeReader.getNextOpcode();
 		var expectedAddOpcode = new AddOpcode(9, 10, 3);
 		assertEquals(expectedAddOpcode, nextOpcode);
 	}
@@ -29,7 +29,7 @@ public class OpcodeReaderTest {
 	@Test
 	public void getNextMultiplierOpcode() {
 		var opcodeReader = new OpcodeRunner(MULTIPLIER_OPCODE);
-		Opcode nextOpcode = opcodeReader.getNextOpcode();
+		Opcode1 nextOpcode = opcodeReader.getNextOpcode();
 		var expectedMultiplierOpcode = new MultiplierOpcode(3, 11, 0);
 		assertEquals(expectedMultiplierOpcode, nextOpcode);
 	}
@@ -37,7 +37,7 @@ public class OpcodeReaderTest {
 	@Test
 	public void getNextHaltOpcode() {
 		var opcodeReader = new OpcodeRunner(HALT_OPCODE);
-		Opcode nextOpcode = opcodeReader.getNextOpcode();
+		Opcode1 nextOpcode = opcodeReader.getNextOpcode();
 		var expectedHaltOpcode = new HaltOpcode();
 		assertEquals(expectedHaltOpcode, nextOpcode);
 	}
@@ -46,7 +46,7 @@ public class OpcodeReaderTest {
 	public void getNextAfterResolvingOpcode() {
 		var opcodeReader = new OpcodeRunner(ORIGINAL_OPCODE);
 		opcodeReader.resolveNextOpcode();
-		Opcode opcode = opcodeReader.getNextOpcode();
+		Opcode1 opcode = opcodeReader.getNextOpcode();
 		var expectedOpcode = new MultiplierOpcode(3, 11, 0);
 		assertEquals(expectedOpcode, opcode);
 	}
@@ -60,7 +60,7 @@ public class OpcodeReaderTest {
 		opcodeReader.resolveNextOpcode();
 		opcodeReader.resolveNextOpcode();
 		opcodeReader.resolveNextOpcode();
-		var opcode = opcodeReader.getNextOpcode();
+		Opcode1 opcode = opcodeReader.getNextOpcode();
 		var haltOpcode = new HaltOpcode();
 		assertEquals(haltOpcode, opcode);
 	}
