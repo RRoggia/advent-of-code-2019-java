@@ -14,14 +14,14 @@ public class OpcodeReaderTest {
 
 	@Test
 	public void readOpcode() {
-		var opcodeReader = new OpcodeReader(ORIGINAL_OPCODE);
+		var opcodeReader = new OpcodeRunner(ORIGINAL_OPCODE);
 		Opcode opcode = opcodeReader.getNextOpcode();
 		assertEquals("1,9,10,3", opcode.toString());
 	}
 
 	@Test
 	public void readFollowingOpcode() {
-		var opcodeReader = new OpcodeReader(ORIGINAL_OPCODE);
+		var opcodeReader = new OpcodeRunner(ORIGINAL_OPCODE);
 		opcodeReader.resolveNextOpcode();
 		Opcode opcode = opcodeReader.getNextOpcode();
 		assertEquals("2,3,11,0", opcode.toString());
@@ -29,7 +29,7 @@ public class OpcodeReaderTest {
 
 	@Test
 	public void readUntilHalt() {
-		var opcodeReader = new OpcodeReader(ORIGINAL_OPCODE);
+		var opcodeReader = new OpcodeRunner(ORIGINAL_OPCODE);
 		opcodeReader.resolveNextOpcode();
 		opcodeReader.resolveNextOpcode();
 		var opcode = opcodeReader.getNextOpcode();
@@ -38,14 +38,14 @@ public class OpcodeReaderTest {
 
 	@Test
 	public void resolveAddOpcode() {
-		var opcodeReader = new OpcodeReader(ORIGINAL_OPCODE);
+		var opcodeReader = new OpcodeRunner(ORIGINAL_OPCODE);
 		opcodeReader.resolveNextOpcode();
 		assertEquals(FIRST_OPCODE_RESOLVED, opcodeReader.getOpcodeCurrentState());
 	}
 
 	@Test
 	public void resolveMultiplyOpcode() {
-		var opcodeReader = new OpcodeReader(ORIGINAL_OPCODE);
+		var opcodeReader = new OpcodeRunner(ORIGINAL_OPCODE);
 		opcodeReader.resolveNextOpcode();
 		opcodeReader.resolveNextOpcode();
 		assertEquals(ALL_OPCODES_RESOLVED, opcodeReader.getOpcodeCurrentState());
@@ -53,7 +53,7 @@ public class OpcodeReaderTest {
 
 	@Test
 	public void resolveHaltOpcode() {
-		var opcodeReader = new OpcodeReader(ORIGINAL_OPCODE);
+		var opcodeReader = new OpcodeRunner(ORIGINAL_OPCODE);
 		opcodeReader.resolveNextOpcode();
 		opcodeReader.resolveNextOpcode();
 		opcodeReader.resolveNextOpcode();
@@ -62,7 +62,7 @@ public class OpcodeReaderTest {
 
 	@Test
 	public void resolveAllOpcodes() {
-		var opcodeReader = new OpcodeReader(ORIGINAL_OPCODE);
+		var opcodeReader = new OpcodeRunner(ORIGINAL_OPCODE);
 		opcodeReader.resolveAllOpcodes();
 		assertEquals(ALL_OPCODES_RESOLVED, opcodeReader.getOpcodeCurrentState());
 	}

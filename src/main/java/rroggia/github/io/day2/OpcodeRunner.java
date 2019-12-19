@@ -9,12 +9,12 @@ import rroggia.github.io.day2.opcode.HaltOpcode;
 import rroggia.github.io.day2.opcode.MultiplierOpcode;
 import rroggia.github.io.day2.opcode.Opcode;
 
-public class OpcodeReader {
+public class OpcodeRunner {
 
 	private int instructionPointer = 0;
 	private String[] opcodes;
 
-	public OpcodeReader(String opcodes) {
+	public OpcodeRunner(String opcodes) {
 		this.opcodes = opcodes.split(",");
 	}
 

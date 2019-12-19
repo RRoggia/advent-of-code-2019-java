@@ -23,7 +23,7 @@ public class Day2 {
 					split[2] = String.valueOf(verb);
 					var changedOpcodes = String.join(",", Arrays.asList(split));
 
-					var opcodeReader = new OpcodeReader(changedOpcodes);
+					var opcodeReader = new OpcodeRunner(changedOpcodes);
 					opcodeReader.resolveAllOpcodes();
 
 					String opcodeCurrentState = opcodeReader.getOpcodeCurrentState();
