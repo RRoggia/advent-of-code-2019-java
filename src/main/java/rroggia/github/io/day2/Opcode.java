@@ -14,5 +14,5 @@ public abstract class Opcode {
 
 	protected abstract String[] resolveOpcode(String[] opcodes);
 
-	protected abstract String getOperation();
+	protected abstract Operation getOperation();
 }

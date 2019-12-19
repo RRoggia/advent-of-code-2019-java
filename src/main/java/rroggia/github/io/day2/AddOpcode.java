@@ -12,8 +12,8 @@ public class AddOpcode extends ChangeMemoryBasedOnTwoInputsOpcode {
 	}
 
 	@Override
-	protected String getOperation() {
-		return "1";
+	protected Operation getOperation() {
+		return Operation.ADD;
 	}
 
 }

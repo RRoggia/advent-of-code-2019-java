@@ -1,12 +1,12 @@
 package rroggia.github.io.day2;
 
-public enum OperationCode {
+public enum Operation {
 
 	ADD("1"), MULTIPLIER("2"), HALT("99");
 
 	private final String code;
 
-	OperationCode(String code) {
+	Operation(String code) {
 		this.code = code;
 	}
 

@@ -1,8 +1,8 @@
 package rroggia.github.io.day2;
 
-import static rroggia.github.io.day2.OperationCode.ADD;
-import static rroggia.github.io.day2.OperationCode.HALT;
-import static rroggia.github.io.day2.OperationCode.MULTIPLIER;
+import static rroggia.github.io.day2.Operation.ADD;
+import static rroggia.github.io.day2.Operation.HALT;
+import static rroggia.github.io.day2.Operation.MULTIPLIER;
 
 public class OpcodeReader {
 
@@ -38,7 +38,7 @@ public class OpcodeReader {
 	public void resolveNextOpcode() {
 		var nextOpcode = this.getNextOpcode();
 
-		if (!HALT.getCode().equals(nextOpcode.getOperation())) {
+		if (HALT != nextOpcode.getOperation()) {
 			lastOpcodeIndex += 4;
 		}
 
@@ -54,7 +54,7 @@ public class OpcodeReader {
 	}
 
 	public void resolveAllOpcodes() {
-		while (!OperationCode.HALT.getCode().equals(this.getNextOpcode().getOperation())) {
+		while (Operation.HALT != this.getNextOpcode().getOperation()) {
 			resolveNextOpcode();
 		}
 

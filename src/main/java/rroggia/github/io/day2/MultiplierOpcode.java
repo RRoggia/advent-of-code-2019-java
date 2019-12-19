@@ -12,8 +12,8 @@ public class MultiplierOpcode extends ChangeMemoryBasedOnTwoInputsOpcode {
 	}
 
 	@Override
-	protected String getOperation() {
-		return "2";
+	protected Operation getOperation() {
+		return Operation.MULTIPLIER;
 	}
 
 }
