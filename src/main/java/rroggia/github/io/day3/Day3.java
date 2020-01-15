@@ -31,7 +31,7 @@ public class Day3 {
 		}
 	}
 
-	private static List<String> determineIntersections(Set<String> firstWireTracesKeys,
+	public static List<String> determineIntersections(Set<String> firstWireTracesKeys,
 			Set<String> secondWireTracesKeys) {
 		var intersections = new ArrayList<String>();
 		for (String key : firstWireTracesKeys) {
