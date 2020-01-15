@@ -33,7 +33,7 @@ public class Day3 {
 		}
 	}
 
-	private static Set<String> determinePointsWireIsConnectedInTheGrid(String wireTraces) {
+	public static Set<String> determinePointsWireIsConnectedInTheGrid(String wireTraces) {
 		var connectionsInTheGrid = new HashSet<String>();
 
 		String[] traces = wireTraces.split(",");
