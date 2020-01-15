@@ -22,3 +22,6 @@
     * move the public static to the wrapper class
     * remove any missing implmentation from the initial class.
 * back and forth from stateles and stateful `GridConnectionDeterminer`
+* testing exception junit 5
+* `Map.of`, `Set.of`
+* heavy usage of var

@@ -35,9 +35,7 @@ public class GridIntersectionDeterminerTest {
 		var secondConnections = GridConnectionDeterminer.getInstance().determineConnections("U7,R6,D4,L4");
 
 		var intersections = GRID.determineIntersections(firstConnections, secondConnections);
-		assertEquals(3, intersections.size());
-
-		System.out.println(intersections);
+		assertEquals(2, intersections.size());
 
 	}
 
