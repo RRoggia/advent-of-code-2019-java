@@ -19,37 +19,37 @@ public class GridConnectionDeterminerTest {
 
 	@Test
 	public void determineUpConnections() {
-		String lastExpectedPosition = "30,0";
+		String lastExpectedPosition = "10,0";
 
-		Set<String> connectionsInTheGrid = Day3.determinePointsWireIsConnectedInTheGrid("U10,U20");
-		assertEquals(30, connectionsInTheGrid.size());
+		Set<String> connectionsInTheGrid = Day3.determinePointsWireIsConnectedInTheGrid("U10");
+		assertEquals(10, connectionsInTheGrid.size());
 		assertTrue(connectionsInTheGrid.contains(lastExpectedPosition));
 	}
 
 	@Test
 	public void determineDownConnections() {
-		String lastExpectedPosition = "-30,0";
+		String lastExpectedPosition = "-10,0";
 
-		Set<String> connectionsInTheGrid = Day3.determinePointsWireIsConnectedInTheGrid("D10,D20");
-		assertEquals(30, connectionsInTheGrid.size());
+		Set<String> connectionsInTheGrid = Day3.determinePointsWireIsConnectedInTheGrid("D10");
+		assertEquals(10, connectionsInTheGrid.size());
 		assertTrue(connectionsInTheGrid.contains(lastExpectedPosition));
 	}
 
 	@Test
 	public void determineRightConnections() {
-		String lastExpectedPosition = "0,30";
+		String lastExpectedPosition = "0,10";
 
-		Set<String> connectionsInTheGrid = Day3.determinePointsWireIsConnectedInTheGrid("R10,R20");
-		assertEquals(30, connectionsInTheGrid.size());
+		Set<String> connectionsInTheGrid = Day3.determinePointsWireIsConnectedInTheGrid("R10");
+		assertEquals(10, connectionsInTheGrid.size());
 		assertTrue(connectionsInTheGrid.contains(lastExpectedPosition));
 	}
 
 	@Test
 	public void determineLeftConnections() {
-		String lastExpectedPosition = "0,-30";
+		String lastExpectedPosition = "0,-10";
 
-		Set<String> connectionsInTheGrid = Day3.determinePointsWireIsConnectedInTheGrid("L10,L20");
-		assertEquals(30, connectionsInTheGrid.size());
+		Set<String> connectionsInTheGrid = Day3.determinePointsWireIsConnectedInTheGrid("L10");
+		assertEquals(10, connectionsInTheGrid.size());
 		assertTrue(connectionsInTheGrid.contains(lastExpectedPosition));
 	}
 
