@@ -28,7 +28,7 @@ public class GridConnectionDeterminer {
 		int axisX = 0;
 		int axisY = 0;
 
-		connectionsInTheGrid.add(axisX + "," + axisY);
+		connectionsInTheGrid.add(createKey(axisX, axisY));
 
 		if (!(traces[0].isBlank() || traces[0].isEmpty())) {
 			for (String trace : traces) {
@@ -39,25 +39,25 @@ public class GridConnectionDeterminer {
 				case UP:
 					for (int i = 1; i <= moviment; i++) {
 						axisX++;
-						connectionsInTheGrid.add(axisX + "," + axisY);
+						connectionsInTheGrid.add(createKey(axisX, axisY));
 					}
 					break;
 				case DOWN:
 					for (int i = 1; i <= moviment; i++) {
 						axisX--;
-						connectionsInTheGrid.add(axisX + "," + axisY);
+						connectionsInTheGrid.add(createKey(axisX, axisY));
 					}
 					break;
 				case RIGHT:
 					for (int i = 1; i <= moviment; i++) {
 						axisY++;
-						connectionsInTheGrid.add(axisX + "," + axisY);
+						connectionsInTheGrid.add(createKey(axisX, axisY));
 					}
 					break;
 				case LEFT:
 					for (int i = 1; i <= moviment; i++) {
 						axisY--;
-						connectionsInTheGrid.add(axisX + "," + axisY);
+						connectionsInTheGrid.add(createKey(axisX, axisY));
 					}
 					break;
 				default:
@@ -67,6 +67,9 @@ public class GridConnectionDeterminer {
 		}
 
 		return connectionsInTheGrid;
+	}
 
+	private String createKey(int axisX, int axisY) {
+		return axisX + "," + axisY;
 	}
 }
