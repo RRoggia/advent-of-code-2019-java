@@ -3,9 +3,7 @@ package rroggia.github.io.day3;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class Day3 {
 
@@ -17,29 +15,21 @@ public class Day3 {
 			var path = FileSystems.getDefault().getPath(RESOURCES_FOLDER, "day3.txt");
 			var wireTraces = Files.readAllLines(path);
 
-			var grid = GridConnectionDeterminer.getInstance();
+			var conectionDeterminer = GridConnectionDeterminer.getInstance();
 
-			var firstWireGridConnections = grid.determineConnections(wireTraces.get(0));
-			var secondWireGridConnections = grid.determineConnections(wireTraces.get(1));
+			var firstWireGridConnections = conectionDeterminer.determineConnections(wireTraces.get(0));
+			var secondWireGridConnections = conectionDeterminer.determineConnections(wireTraces.get(1));
 
-			var intersections = determineIntersections(firstWireGridConnections, secondWireGridConnections);
+			var intersectionDeterminer = new GridIntersectionDeterminer();
+			var intersections = intersectionDeterminer.determineIntersections(firstWireGridConnections,
+					secondWireGridConnections);
+
 			int closestDistance = getClosestDistanceToPoint(intersections);
 			System.out.println(closestDistance);
 
 		} catch (IOException e) {
 			System.out.println("Error while reading the input file;");
 		}
-	}
-
-	public static List<String> determineIntersections(Set<String> firstWireTracesKeys,
-			Set<String> secondWireTracesKeys) {
-		var intersections = new ArrayList<String>();
-		for (String key : firstWireTracesKeys) {
-			if (secondWireTracesKeys.contains(key)) {
-				intersections.add(key);
-			}
-		}
-		return intersections;
 	}
 
 	private static int getClosestDistanceToPoint(List<String> intersections) {
