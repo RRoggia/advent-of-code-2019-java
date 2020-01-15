@@ -34,7 +34,7 @@ public class GridConnectionDeterminerTest {
 		assertEquals(30, connectionsInTheGrid.size());
 		assertTrue(connectionsInTheGrid.contains(lastExpectedPosition));
 	}
-	
+
 	@Test
 	public void determineRightConnections() {
 		String lastExpectedPosition = "0,30";
@@ -43,7 +43,14 @@ public class GridConnectionDeterminerTest {
 		assertEquals(30, connectionsInTheGrid.size());
 		assertTrue(connectionsInTheGrid.contains(lastExpectedPosition));
 	}
-	
-	
+
+	@Test
+	public void determineLeftConnections() {
+		String lastExpectedPosition = "0,-30";
+
+		Set<String> connectionsInTheGrid = Day3.determinePointsWireIsConnectedInTheGrid("L10,L20");
+		assertEquals(30, connectionsInTheGrid.size());
+		assertTrue(connectionsInTheGrid.contains(lastExpectedPosition));
+	}
 
 }
