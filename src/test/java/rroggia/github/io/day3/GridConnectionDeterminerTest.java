@@ -9,6 +9,14 @@ import org.junit.jupiter.api.Test;
 
 public class GridConnectionDeterminerTest {
 
+	@Test //TODO need to implement after refactoring
+	public void determineInitialConnection() {
+		String initalPositionExpected = "0,0";
+
+		Set<String> upConnectedInTheGrid = Day3.determinePointsWireIsConnectedInTheGrid("");
+		assertTrue(upConnectedInTheGrid.contains(initalPositionExpected));
+	}
+
 	@Test
 	public void determineUpConnections() {
 		String lastExpectedPosition = "30,0";
