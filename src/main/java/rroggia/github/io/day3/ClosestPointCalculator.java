@@ -1,6 +1,6 @@
 package rroggia.github.io.day3;
 
-import java.util.List;
+import java.util.Map;
 
 public class ClosestPointCalculator {
 
@@ -14,9 +14,9 @@ public class ClosestPointCalculator {
 		return INSTANCE;
 	}
 
-	public int calculate(List<String> intersections) {
+	public int calculate(Map<String, String> intersections) {
 		int closestDistance = Integer.MAX_VALUE;
-		for (String intersection : intersections) {
+		for (String intersection : intersections.values()) {
 			String[] split = intersection.split(",");
 			int x = Integer.parseInt(split[0]);
 			int y = Integer.parseInt(split[1]);

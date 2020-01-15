@@ -1,7 +1,7 @@
 package rroggia.github.io.day3;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Function;
 
 public class GridConnectionDeterminer {
@@ -16,19 +16,21 @@ public class GridConnectionDeterminer {
 	public static final GridConnectionDeterminer getInstance() {
 		return INSTANCE;
 	}
+
 	private GridConnectionDeterminer() {
 		// make it private to avoid intantiation via constructor
 	}
 
-	public Set<String> determineConnections(String wireTraces) {
+	public Map<String, Integer> determineConnections(String wireTraces) {
 
 		String[] traces = wireTraces.split(",");
 
-		Set<String> gridConnections = new HashSet<>();
+		var gridConnections = new HashMap<String, Integer>();
 		int axisX = 0;
 		int axisY = 0;
+		int total = 0;
 
-		gridConnections.add(createKey(axisX, axisY));
+		//gridConnections.put(createKey(axisX, axisY), total);
 
 		if (hasConnectionsToDetemine(traces)) {
 			for (String trace : traces) {
@@ -37,24 +39,25 @@ public class GridConnectionDeterminer {
 
 				switch (direction) {
 				case RIGHT:
-					addConnectionFromAxisX(gridConnections, moviment, axisX, axisY, x -> ++x);
+					addConnectionFromAxisX(gridConnections, moviment, total, axisX, axisY, x -> ++x);
 					axisX += moviment;
 					break;
 				case LEFT:
-					addConnectionFromAxisX(gridConnections, moviment, axisX, axisY, x -> --x);
+					addConnectionFromAxisX(gridConnections, moviment, total, axisX, axisY, x -> --x);
 					axisX -= moviment;
 					break;
 				case UP:
-					addConnectionFromAxisY(gridConnections, moviment, axisX, axisY, y -> ++y);
+					addConnectionFromAxisY(gridConnections, moviment, total, axisX, axisY, y -> ++y);
 					axisY += moviment;
 					break;
 				case DOWN:
-					addConnectionFromAxisY(gridConnections, moviment, axisX, axisY, y -> --y);
+					addConnectionFromAxisY(gridConnections, moviment, total, axisX, axisY, y -> --y);
 					axisY -= moviment;
 					break;
 				default:
 					throw new RuntimeException("input or split is not right.");
 				}
+				total += moviment;
 			}
 		}
 		return gridConnections;
@@ -68,22 +71,25 @@ public class GridConnectionDeterminer {
 		return axisX + "," + axisY;
 	}
 
-	private void addConnectionFromAxisX(Set<String> gridConnections, int moviment, int axisX, int axisY,
-			Function<Integer, Integer> operationX) {
-		addConnectionsToGrid(gridConnections, moviment, axisX, axisY, operationX, Function.identity());
+	private void addConnectionFromAxisX(Map<String, Integer> gridConnections, int moviment, int total, int axisX,
+			int axisY, Function<Integer, Integer> operationX) {
+		addConnectionsToGrid(gridConnections, moviment, total, axisX, axisY, operationX, Function.identity());
 	}
 
-	private void addConnectionFromAxisY(Set<String> gridConnections, int moviment, int axisX, int axisY,
-			Function<Integer, Integer> operationY) {
-		addConnectionsToGrid(gridConnections, moviment, axisX, axisY, Function.identity(), operationY);
+	private void addConnectionFromAxisY(Map<String, Integer> gridConnections, int moviment, int total, int axisX,
+			int axisY, Function<Integer, Integer> operationY) {
+		addConnectionsToGrid(gridConnections, moviment, total, axisX, axisY, Function.identity(), operationY);
 	}
 
-	private void addConnectionsToGrid(Set<String> gridConnections, int moviment, int axisX, int axisY,
-			Function<Integer, Integer> operationX, Function<Integer, Integer> operationY) {
+	private void addConnectionsToGrid(Map<String, Integer> gridConnections, int moviment, int total, int axisX,
+			int axisY, Function<Integer, Integer> operationX, Function<Integer, Integer> operationY) {
 		for (int i = 1; i <= moviment; i++) {
 			axisX = operationX.apply(axisX);
 			axisY = operationY.apply(axisY);
-			gridConnections.add(createKey(axisX, axisY));
+			total++;
+			if (!gridConnections.containsKey(createKey(axisX, axisY))) {
+				gridConnections.put(createKey(axisX, axisY), total);
+			}
 		}
 	}
 }

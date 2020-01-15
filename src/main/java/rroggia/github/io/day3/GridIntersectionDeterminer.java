@@ -1,8 +1,7 @@
 package rroggia.github.io.day3;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 public class GridIntersectionDeterminer {
 
@@ -16,11 +15,12 @@ public class GridIntersectionDeterminer {
 		return INSTANCE;
 	}
 
-	public List<String> determineIntersections(Set<String> firstConections, Set<String> secondConections) {
-		var intersections = new ArrayList<String>();
-		for (String key : firstConections) {
-			if (secondConections.contains(key)) {
-				intersections.add(key);
+	public Map<String, String> determineIntersections(Map<String, Integer> firstConections,
+			Map<String, Integer> secondConections) {
+		var intersections = new HashMap<String, String>();
+		for (String key : firstConections.keySet()) {
+			if (secondConections.containsKey(key)) {
+				intersections.put(key, firstConections.get(key) + "," + secondConections.get(key));
 			}
 		}
 		return intersections;
