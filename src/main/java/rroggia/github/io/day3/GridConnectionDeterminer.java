@@ -52,7 +52,7 @@ public class GridConnectionDeterminer {
 	}
 
 	private boolean hasConnectionsToDetemine(String[] traces) {
-		return !(traces[0].isBlank() || traces[0].isEmpty());
+		return !(traces == null || traces[0].isBlank() || traces[0].isEmpty());
 	}
 
 	private String createKey(int axisX, int axisY) {
