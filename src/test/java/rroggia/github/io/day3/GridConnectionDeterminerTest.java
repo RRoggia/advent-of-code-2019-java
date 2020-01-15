@@ -1,6 +1,7 @@
 package rroggia.github.io.day3;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Set;
@@ -22,6 +23,9 @@ public class GridConnectionDeterminerTest {
 		String initalPositionExpected = "0,0";
 
 		Set<String> gridConnections = grid.determineConnections("");
+		assertTrue(gridConnections.contains(initalPositionExpected));
+
+		gridConnections = grid.determineConnections("   ");
 		assertTrue(gridConnections.contains(initalPositionExpected));
 	}
 
@@ -67,4 +71,9 @@ public class GridConnectionDeterminerTest {
 		assertTrue(gridConnections.contains("145,11"));
 	}
 
+	@Test
+	public void determineWrongInvalidWireTraces() {
+		assertThrows(RuntimeException.class, () -> grid.determineConnections("X10"));
+
+	}
 }
