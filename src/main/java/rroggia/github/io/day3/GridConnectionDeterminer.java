@@ -31,16 +31,16 @@ public class GridConnectionDeterminer {
 				var moviment = Integer.parseInt(trace.substring(1, trace.length()));
 
 				switch (direction) {
-				case UP:
+				case RIGHT:
 					addConnectionFromAxisX(moviment, x -> ++x);
 					break;
-				case DOWN:
+				case LEFT:
 					addConnectionFromAxisX(moviment, x -> --x);
 					break;
-				case RIGHT:
+				case UP:
 					addConnectionFromAxisY(moviment, y -> ++y);
 					break;
-				case LEFT:
+				case DOWN:
 					addConnectionFromAxisY(moviment, y -> --y);
 					break;
 				default:
