@@ -13,26 +13,37 @@ public class GridConnectionDeterminerTest {
 	public void determineInitialConnection() {
 		String initalPositionExpected = "0,0";
 
-		Set<String> upConnectedInTheGrid = Day3.determinePointsWireIsConnectedInTheGrid("");
-		assertTrue(upConnectedInTheGrid.contains(initalPositionExpected));
+		Set<String> connectionsInTheGrid = Day3.determinePointsWireIsConnectedInTheGrid("");
+		assertTrue(connectionsInTheGrid.contains(initalPositionExpected));
 	}
 
 	@Test
 	public void determineUpConnections() {
 		String lastExpectedPosition = "30,0";
 
-		Set<String> upConnectedInTheGrid = Day3.determinePointsWireIsConnectedInTheGrid("U10,U20");
-		assertEquals(30, upConnectedInTheGrid.size());
-		assertTrue(upConnectedInTheGrid.contains(lastExpectedPosition));
+		Set<String> connectionsInTheGrid = Day3.determinePointsWireIsConnectedInTheGrid("U10,U20");
+		assertEquals(30, connectionsInTheGrid.size());
+		assertTrue(connectionsInTheGrid.contains(lastExpectedPosition));
 	}
 
 	@Test
 	public void determineDownConnections() {
 		String lastExpectedPosition = "-30,0";
 
-		Set<String> upConnectedInTheGrid = Day3.determinePointsWireIsConnectedInTheGrid("D10,D20");
-		assertEquals(30, upConnectedInTheGrid.size());
-		assertTrue(upConnectedInTheGrid.contains(lastExpectedPosition));
+		Set<String> connectionsInTheGrid = Day3.determinePointsWireIsConnectedInTheGrid("D10,D20");
+		assertEquals(30, connectionsInTheGrid.size());
+		assertTrue(connectionsInTheGrid.contains(lastExpectedPosition));
 	}
+	
+	@Test
+	public void determineRightConnections() {
+		String lastExpectedPosition = "0,30";
+
+		Set<String> connectionsInTheGrid = Day3.determinePointsWireIsConnectedInTheGrid("R10,R20");
+		assertEquals(30, connectionsInTheGrid.size());
+		assertTrue(connectionsInTheGrid.contains(lastExpectedPosition));
+	}
+	
+	
 
 }
