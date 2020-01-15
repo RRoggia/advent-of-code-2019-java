@@ -17,12 +17,12 @@ public class Day3 {
 			var path = FileSystems.getDefault().getPath(RESOURCES_FOLDER, "day3.txt");
 			var wireTraces = Files.readAllLines(path);
 
-			GridConnectionDeterminer grid = new GridConnectionDeterminer();
+			var grid = GridConnectionDeterminer.getInstance();
 
-			var firstWireTracesKeys = grid.determineConnections(wireTraces.get(0));
-			var secondWireTracesKeys = grid.determineConnections(wireTraces.get(1));
+			var firstWireGridConnections = grid.determineConnections(wireTraces.get(0));
+			var secondWireGridConnections = grid.determineConnections(wireTraces.get(1));
 
-			var intersections = determineIntersections(firstWireTracesKeys, secondWireTracesKeys);
+			var intersections = determineIntersections(firstWireGridConnections, secondWireGridConnections);
 			int closestDistance = getClosestDistanceToPoint(intersections);
 			System.out.println(closestDistance);
 

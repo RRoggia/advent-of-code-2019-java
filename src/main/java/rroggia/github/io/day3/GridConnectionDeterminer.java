@@ -11,17 +11,22 @@ public class GridConnectionDeterminer {
 	private static final char RIGHT = 'R';
 	private static final char LEFT = 'L';
 
-	private Set<String> gridConnections;
-	private int axisX;
-	private int axisY;
+	private static final GridConnectionDeterminer INSTANCE = new GridConnectionDeterminer();
+
+	public static final GridConnectionDeterminer getInstance() {
+		return INSTANCE;
+	}
+	private GridConnectionDeterminer() {
+		// make it private to avoid intantiation via constructor
+	}
 
 	public Set<String> determineConnections(String wireTraces) {
 
 		String[] traces = wireTraces.split(",");
 
-		gridConnections = new HashSet<>();
-		axisX = 0;
-		axisY = 0;
+		Set<String> gridConnections = new HashSet<>();
+		int axisX = 0;
+		int axisY = 0;
 
 		gridConnections.add(createKey(axisX, axisY));
 
@@ -32,16 +37,20 @@ public class GridConnectionDeterminer {
 
 				switch (direction) {
 				case RIGHT:
-					addConnectionFromAxisX(moviment, x -> ++x);
+					addConnectionFromAxisX(gridConnections, moviment, axisX, axisY, x -> ++x);
+					axisX += moviment;
 					break;
 				case LEFT:
-					addConnectionFromAxisX(moviment, x -> --x);
+					addConnectionFromAxisX(gridConnections, moviment, axisX, axisY, x -> --x);
+					axisX -= moviment;
 					break;
 				case UP:
-					addConnectionFromAxisY(moviment, y -> ++y);
+					addConnectionFromAxisY(gridConnections, moviment, axisX, axisY, y -> ++y);
+					axisY += moviment;
 					break;
 				case DOWN:
-					addConnectionFromAxisY(moviment, y -> --y);
+					addConnectionFromAxisY(gridConnections, moviment, axisX, axisY, y -> --y);
+					axisY -= moviment;
 					break;
 				default:
 					throw new RuntimeException("input or split is not right.");
@@ -59,16 +68,18 @@ public class GridConnectionDeterminer {
 		return axisX + "," + axisY;
 	}
 
-	private void addConnectionFromAxisX(int moviment, Function<Integer, Integer> operationX) {
-		addConnectionsToGrid(moviment, operationX, Function.identity());
+	private void addConnectionFromAxisX(Set<String> gridConnections, int moviment, int axisX, int axisY,
+			Function<Integer, Integer> operationX) {
+		addConnectionsToGrid(gridConnections, moviment, axisX, axisY, operationX, Function.identity());
 	}
 
-	private void addConnectionFromAxisY(int moviment, Function<Integer, Integer> operationY) {
-		addConnectionsToGrid(moviment, Function.identity(), operationY);
-	}
-
-	private void addConnectionsToGrid(int moviment, Function<Integer, Integer> operationX,
+	private void addConnectionFromAxisY(Set<String> gridConnections, int moviment, int axisX, int axisY,
 			Function<Integer, Integer> operationY) {
+		addConnectionsToGrid(gridConnections, moviment, axisX, axisY, Function.identity(), operationY);
+	}
+
+	private void addConnectionsToGrid(Set<String> gridConnections, int moviment, int axisX, int axisY,
+			Function<Integer, Integer> operationX, Function<Integer, Integer> operationY) {
 		for (int i = 1; i <= moviment; i++) {
 			axisX = operationX.apply(axisX);
 			axisY = operationY.apply(axisY);
