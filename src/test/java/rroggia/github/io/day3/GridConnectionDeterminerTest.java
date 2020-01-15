@@ -22,7 +22,7 @@ public class GridConnectionDeterminerTest {
 		String lastExpectedPosition = "10,0";
 
 		Set<String> connectionsInTheGrid = Day3.determinePointsWireIsConnectedInTheGrid("U10");
-		assertEquals(10, connectionsInTheGrid.size());
+		assertEquals(11, connectionsInTheGrid.size());
 		assertTrue(connectionsInTheGrid.contains(lastExpectedPosition));
 	}
 
@@ -31,7 +31,7 @@ public class GridConnectionDeterminerTest {
 		String lastExpectedPosition = "-10,0";
 
 		Set<String> connectionsInTheGrid = Day3.determinePointsWireIsConnectedInTheGrid("D10");
-		assertEquals(10, connectionsInTheGrid.size());
+		assertEquals(11, connectionsInTheGrid.size());
 		assertTrue(connectionsInTheGrid.contains(lastExpectedPosition));
 	}
 
@@ -40,7 +40,7 @@ public class GridConnectionDeterminerTest {
 		String lastExpectedPosition = "0,10";
 
 		Set<String> connectionsInTheGrid = Day3.determinePointsWireIsConnectedInTheGrid("R10");
-		assertEquals(10, connectionsInTheGrid.size());
+		assertEquals(11, connectionsInTheGrid.size());
 		assertTrue(connectionsInTheGrid.contains(lastExpectedPosition));
 	}
 
@@ -49,7 +49,7 @@ public class GridConnectionDeterminerTest {
 		String lastExpectedPosition = "0,-10";
 
 		Set<String> connectionsInTheGrid = Day3.determinePointsWireIsConnectedInTheGrid("L10");
-		assertEquals(10, connectionsInTheGrid.size());
+		assertEquals(11, connectionsInTheGrid.size());
 		assertTrue(connectionsInTheGrid.contains(lastExpectedPosition));
 	}
 

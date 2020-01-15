@@ -41,37 +41,41 @@ public class Day3 {
 		int axisX = 0;
 		int axisY = 0;
 
-		for (String trace : traces) {
-			var direction = trace.charAt(0);
-			var moviment = Integer.parseInt(trace.substring(1, trace.length()));
+		connectionsInTheGrid.add(axisX + "," + axisY);
 
-			switch (direction) {
-			case UP:
-				for (int i = 1; i <= moviment; i++) {
-					axisX++;
-					connectionsInTheGrid.add(axisX + "," + axisY);
+		if (!(traces[0].isBlank() || traces[0].isEmpty())) {
+			for (String trace : traces) {
+				var direction = trace.charAt(0);
+				var moviment = Integer.parseInt(trace.substring(1, trace.length()));
+
+				switch (direction) {
+				case UP:
+					for (int i = 1; i <= moviment; i++) {
+						axisX++;
+						connectionsInTheGrid.add(axisX + "," + axisY);
+					}
+					break;
+				case DOWN:
+					for (int i = 1; i <= moviment; i++) {
+						axisX--;
+						connectionsInTheGrid.add(axisX + "," + axisY);
+					}
+					break;
+				case RIGHT:
+					for (int i = 1; i <= moviment; i++) {
+						axisY++;
+						connectionsInTheGrid.add(axisX + "," + axisY);
+					}
+					break;
+				case LEFT:
+					for (int i = 1; i <= moviment; i++) {
+						axisY--;
+						connectionsInTheGrid.add(axisX + "," + axisY);
+					}
+					break;
+				default:
+					throw new RuntimeException("input or split is not right.");
 				}
-				break;
-			case DOWN:
-				for (int i = 1; i <= moviment; i++) {
-					axisX--;
-					connectionsInTheGrid.add(axisX + "," + axisY);
-				}
-				break;
-			case RIGHT:
-				for (int i = 1; i <= moviment; i++) {
-					axisY++;
-					connectionsInTheGrid.add(axisX + "," + axisY);
-				}
-				break;
-			case LEFT:
-				for (int i = 1; i <= moviment; i++) {
-					axisY--;
-					connectionsInTheGrid.add(axisX + "," + axisY);
-				}
-				break;
-			default:
-				throw new RuntimeException("input or split is not right.");
 			}
 		}
 
